@@ -1,16 +1,12 @@
 <?php
-// Inclui a conexão com o banco de dados
-include('../server/connection.php'); // Caminho relativo da pasta 'admin/'
+include('../server/connection.php'); 
 
 $error_message = '';
-$user_name = 'Usuário Desconhecido'; // Variável para exibir o nome do usuário
-$user_id_filter = null; // ID do usuário que estamos filtrando
+$user_name = 'Usuário Desconhecido'; 
+$user_id_filter = null; 
 
-// 1. Obter o user_id da URL (via GET)
 if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
     $user_id_filter = $_GET['user_id'];
-
-    // Buscar o nome do usuário
     $stmt_user_name = $conn->prepare("SELECT user_name FROM users WHERE user_id = ? LIMIT 1");
     $stmt_user_name->bind_param('i', $user_id_filter);
     $stmt_user_name->execute();
@@ -24,17 +20,14 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
     $stmt_user_name->close();
 
 } else {
-    // Se nenhum user_id for fornecido, redireciona para a lista de usuários ou exibe erro
     header('Location: account.php?error_message=ID do usuário não fornecido para ver os pedidos.');
     exit;
 }
 
-// --- Lógica de Paginação ---
-$limit = 10; // Número de pedidos por página
-$page = isset($_GET['page']) ? $_GET['page'] : 1; // Página atual, padrão é 1
+$limit = 10; 
+$page = isset($_GET['page']) ? $_GET['page'] : 1; 
 $offset = ($page - 1) * $limit;
 
-// 2. Consulta para contar o total de pedidos para ESTE USUÁRIO
 $stmt_total = $conn->prepare("SELECT COUNT(*) FROM orders WHERE user_id = ?");
 $stmt_total->bind_param('i', $user_id_filter);
 $stmt_total->execute();
@@ -44,10 +37,9 @@ $stmt_total->close();
 
 $total_pages = ceil($total_records / $limit);
 
-// 3. Consulta para buscar os pedidos para ESTE USUÁRIO com paginação
-$orders = []; // Array para armazenar os pedidos
+$orders = []; 
 
-if ($user_id_filter !== null) { // Apenas busca se o ID do usuário for válido
+if ($user_id_filter !== null) { 
     $stmt = $conn->prepare("SELECT order_id, order_cost, order_status, user_id, shipping_city, shipping_uf, shipping_address, order_date FROM orders WHERE user_id = ? ORDER BY order_date DESC LIMIT ? OFFSET ?");
     $stmt->bind_param('iii', $user_id_filter, $limit, $offset);
     $stmt->execute();
@@ -55,12 +47,12 @@ if ($user_id_filter !== null) { // Apenas busca se o ID do usuário for válido
 }
 
 ?>
-<?php include('./header.php'); // Inclui o cabeçalho do admin com a proteção de sessão ?>
+<?php include('./header.php'); ?>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-lg-2 sidebar">
-            <?php include('./sidemenu.php'); // Inclui o menu lateral ?>
+            <?php include('./sidemenu.php'); ?>
         </div>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

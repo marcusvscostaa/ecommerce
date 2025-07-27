@@ -1,7 +1,11 @@
 body {
-    font-family: 'Poppins', sans-serif; /* Exemplo de fonte, importe se usar */
-    margin-top: 100px; /* Para dar espaço ao navbar fixo */
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-top: 100px; 
     background-color: #ebebeb;
+    width: 100%;
+    height: 100vh; 
 }
 
 /* Estilo do Navbar */
@@ -11,11 +15,9 @@ body {
 
 .nav .nav-link:hover,
 .nav .nav-link.active {
-    color: #6c757d; /* Cor ao passar o mouse ou ativo */
+    color: #6c757d; 
 }
 .nav-buttons {
-    /* Ajuste para mover os botões para a esquerda (Font Awesome e Conta) */
-    /* Isso fará o menu ir mais para a direita, empurrando os ícones para a esquerda */
     margin-left: 60%;
 }
 
@@ -27,19 +29,16 @@ body {
 
 
 /* Estilo do Banner (Seção Home) */
-#home {
-    /* Altere 'back.jfif' para o nome da sua imagem de background */
-    width: 100%;
-    height: 100vh; /* Altura total da viewport */
-    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
-    background-position: center; /* Centraliza a imagem */
+#home {  
+    background-size: cover; 
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    color: white; /* Cor do texto para contraste com o background */
-    padding-left: 50px; /* Espaçamento da esquerda */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para melhor legibilidade */
+    color: white; 
+    padding-left: 50px; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
 }
 
 #home h5 {
@@ -66,7 +65,7 @@ footer {
 }
 
 footer .footer-logo {
-    max-width: 120px; /* Ajuste o tamanho da logo no footer */
+    max-width: 120px;
     height: auto;
 }
 
@@ -149,8 +148,8 @@ footer .row .img-fluid:hover {
 }
 
 .product a {
-    text-decoration: none; /* Remove o sublinhado */
-    color: inherit;        /* Faz o texto herdar a cor do pai (geralmente preto/cinza) */
+    text-decoration: none; 
+    color: inherit;
 }
 #products .product .divProduct:hover{
     box-shadow: 1px 1px 10px 1px rgb(201, 200, 200);
@@ -173,7 +172,7 @@ footer .row .img-fluid:hover {
 }
 
 #products .product:hover img {
-    opacity: 0.7; /* Opacidade no hover */
+    opacity: 0.7; 
 }
 #products .product .p-name {
     font-size: 0.9em;
@@ -196,10 +195,10 @@ footer .row .img-fluid:hover {
     background-color: #212529;
     margin-top: 10px;
     border: none;
-    opacity: 1; /* Garante que a linha seja visível */
+    opacity: 1; 
 }
 
-/* Estilos de Paginação do Bootstrap (apenas para customização se necessário) */
+/* Estilos de Paginação do Bootstrap */
 .pagination .page-item .page-link {
     color: #212529;
     border: 1px solid #212529;
@@ -226,7 +225,7 @@ footer .row .img-fluid:hover {
     display: flex;
     justify-content: center;
     align-items: center; 
-    border: 2px solid #eee; /* Adiciona borda para miniaturas */
+    border: 2px solid #eee;
     border-radius: 4px;
     margin-bottom: 8px;
     padding: 2px;
@@ -301,14 +300,14 @@ footer .row .img-fluid:hover {
 }
 /* Estilos para a miniatura ativa/selecionada */
 #single-product .small-img-col.active-thumbnail {
-    border: 2px solid rgb(36, 36, 36); /* Borda mais grossa e colorida para a miniatura ativa */
-    box-shadow: 0 0 8px rgba(28, 28, 28, 0.5); /* Sombra suave com a cor da borda */
+    border: 2px solid rgb(36, 36, 36); 
+    box-shadow: 0 0 8px rgba(28, 28, 28, 0.5); 
 }
 /* Estilos para a seção de formulários (login/registro) */
 #login-form .container{
-    max-width: 400px; /* Largura máxima para o formulário */
+    max-width: 400px; 
     border-radius: 4px;
-    background-color: #fff; /* Fundo branco para o card do formulário */
+    background-color: #fff;
 }
 
 #login-form .container h2 {
@@ -334,7 +333,7 @@ footer .row .img-fluid:hover {
     text-decoration: underline;
 }
 /* Estilos para a seção de formulários (login/registro) - Reutilize ou ajuste de #login-form */
-#register-form .container, /* Adicione esta linha */
+#register-form .container, 
 #login-form .container {
     max-width: 400px;
     padding: 30px;
@@ -344,29 +343,30 @@ footer .row .img-fluid:hover {
 }
 
 
-#register-form form .btn-primary, /* Adicione esta linha */
+#register-form form .btn-primary,
 #login-form form .btn-primary {
     background-color: rgb(0, 0, 0);
     color: white;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-#register-form form .btn-primary:hover, /* Adicione esta linha */
+#register-form form .btn-primary:hover, 
 #login-form form .btn-primary:hover {
     background-color: rgb(31, 31, 31);
 
 }
 
-#register-form form a, /* Adicione esta linha */
+#register-form form a, 
 #login-form form a {
     color: #2d68a8;
     text-decoration: none;
 }
 
-#register-form form a:hover, /* Adicione esta linha */
+#register-form form a:hover, 
 #login-form form a:hover {
     text-decoration: underline;
 }
+
 /* Estilos gerais para seções de conteúdo */
 section {
     padding: 0;
@@ -412,8 +412,6 @@ section h2 {
 .account-info .table {
     margin-top: 20px;
 }
-
-
 
 .account-info .table td {
     vertical-align: middle;
@@ -528,13 +526,11 @@ section h2 {
     margin-top: 20px;
 }
 /* Estilos para o Carrossel (Banner) */
-/* Carousel heading */
 .heading {
     display: block;
     text-align: center;
 }
 
-/* Container for the entire carousel */
 .multi-carousel-container {
     cursor: grab;
     margin: 0 auto;
@@ -543,28 +539,24 @@ section h2 {
     position: relative;
 }
 
-/* Cursor styles for dragging */
 .multi-carousel-container.dragging,
 #multiCarousel.dragging {
     cursor: grabbing;
 }
 
-/* Wrapper for all slides */
 .multi-carousel-inner {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Individual slide */
 .multi-carousel-item,
 .clone {
     box-sizing: border-box;
-    flex: 0 0 33.33%; /* 3 itens por slide em desktop */
+    flex: 0 0 33.33%; 
     padding: 0 5px;
     position: relative;
 }
 
-/* Control buttons */
 .multi-carousel-control-prev,
 .multi-carousel-control-next {
     align-items: center;
@@ -598,21 +590,19 @@ section h2 {
     right: 10px;
 }
 
-/* Image container with dynamic height */
 .img-container {
     border-radius: 1.5rem;
-    height: 200px; /* Usará variável JS para altura */
+    height: 200px; 
     overflow: hidden;
     position: relative;
     background-color: white;
 }
-/* Image styling */
 .img-container img,
 #carouselInner img {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    pointer-events: none; /* Desabilita arrastar imagem padrão */
+    pointer-events: none; 
     -webkit-user-drag: none;
     transition: transform 0.3s ease;
     mix-blend-mode: multiply;
@@ -622,23 +612,7 @@ section h2 {
     transform: translateZ(0) scale(1.02);
 }
 
-/* Item number styling - guaranteed visibility */
-.item-number {
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 50%;
-    display: inline-flex;
-    font-size: 120%;
-    font-weight: bold;
-    height: 35px;
-    justify-content: center;
-    left: 1rem;
-    position: absolute;
-    top: 1rem;
-    width: 35px;
-    z-index: 2;
-    isolation: isolate;
-}
+
 .font-section{
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
@@ -649,15 +623,14 @@ section h2 {
 .carousel-item-caption{
     z-index: 4;
     position: absolute;
-    top: 50%; /* Posiciona o topo do caption no meio verticalmente */
-    left:67%; /* Posiciona o lado esquerdo do caption no meio horizontalmente */
-    transform: translate(-50%, -50%); /* Move o caption para trás pela metade de sua própria largura e altura, centralizando-o */
-    width: 60%; /* Garante que o caption ocupe uma largura razoável */
-    max-width: 500px; /* Limita a largura para que o texto não se espalhe demais */
+    top: 50%; 
+    left:67%; 
+    transform: translate(-50%, -50%); 
+    width: 60%; 
+    max-width: 500px; 
     padding: 10px;
     border-radius: 8px;
-    text-align: start; /* CENTRALIZA O TEXTO INTERNAMENTE */
-    color: white;
+    text-align: start; 
 }
 
 .carousel-item-caption-rotation {
@@ -669,7 +642,7 @@ section h2 {
     margin-top: -50px;
     text-align: center;
     font-size: 0.9em;
-    transform: rotate(10deg); /* Equal to rotateZ(45deg) */
+    transform: rotate(10deg); 
     position: absolute;
     left: 150px;
 }
@@ -687,13 +660,11 @@ section h2 {
     width: 50%;
 }
 
-/* Cursor styling */
 #multiCarousel {
     cursor: grab;
     touch-action: pan-y;
 }
 
-/* Disable text selection during drag */
 #multiCarousel.dragging {
     user-select: none;
     -webkit-user-select: none;
@@ -701,23 +672,23 @@ section h2 {
 
 /* Estilos para a busca dinâmica */
 #live-search-results {
-    top: 100%; /* Posiciona abaixo do input-group */
+    top: 100%; 
     left: 0;
-    z-index: 1000; /* Garante que fique acima de outros elementos */
+    z-index: 1000; 
     background-color: #fff;
     border: 1px solid #ddd;
     border-top: none;
-    max-height: 250px; /* Limita a altura e adiciona scroll */
+    max-height: 250px; 
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none; /* Esconde por padrão, JS mostrará quando houver resultados */
+    display: none;
 }
 
 #live-search-results .list-group-item {
-    border-radius: 0; /* Remove bordas arredondadas dos itens */
+    border-radius: 0; 
     padding: 10px 15px;
     cursor: pointer;
-    display: flex; /* Para alinhar imagem e texto */
+    display: flex; 
     align-items: center;
 }
 
@@ -735,16 +706,56 @@ section h2 {
 
 #live-search-results .search-price {
     font-weight: bold;
-    color: #00a911; /* Cor do preço */
-    margin-left: auto; /* Empurra o preço para a direita */
+    color: #00a911; 
+    margin-left: auto; 
 }
 
+/* Página de pagamento */
+.payment-info-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+    background-color: #fff;
+}
+.payment-info-card .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+    color: #333;
+    padding: 15px 20px;
+    margin: -20px -20px 20px -20px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.payment-info-card p strong {
+    color: #555;
+}
+.order-items-table-payment img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+}
 
+.payment-total-summary p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.payment-total-summary p strong {
+    color: coral;
+    font-size: 1.5rem;
+}
+#paypal-button-container {
+    margin-top: 30px;
+    min-height: 50px;
+}
 /* Responsive adjustments for screens smaller than 720px (45em) */
 @media (max-width: 45em) {
     .multi-carousel-item,
     .clone {
-        flex: 0 0 100%; /* 1 item por slide em mobile */
+        flex: 0 0 100%; 
     }
     .multi-carousel-control-prev,
     .multi-carousel-control-next {
@@ -760,16 +771,16 @@ section h2 {
 /* Responsividade básica (para ajustar o margin-left em telas menores) */
 @media (max-width: 992px) {
     .nav-buttons {
-        margin-left: 0; /* Remove o margin-left em telas menores para o menu padrão do Bootstrap */
-        width: 100%; /* Ocupa toda a largura */
-        text-align: center; /* Centraliza os itens do menu no modo mobile */
+        margin-left: 0; 
+        width: 100%; 
+        text-align: center; 
     }
     .navbar-collapse {
-        margin-top: 10px; /* Espaço para o menu quando colapsado */
+        margin-top: 10px; 
     }
     #home {
-        padding-left: 20px; /* Ajusta o padding para telas menores */
-        height: 70vh; /* Reduz a altura do banner em telas menores */
+        padding-left: 20px; 
+        height: 70vh; 
     }
     #home h1 {
         font-size: 2.5em;
@@ -779,7 +790,7 @@ section h2 {
         margin-bottom: 30px;
     }
     footer .footer-col ul {
-        display: inline-block; /* Para centralizar a lista em telas menores */
+        display: inline-block; 
     }
 }
 

@@ -1,17 +1,12 @@
 <?php
-// Inclui a conexão com o banco de dados
-include('../server/connection.php'); // Caminho relativo da pasta 'admin/'
-
+include('../server/connection.php'); 
 $error_message = '';
 $order = null;
 $order_items = [];
 
-// Verifica se o order_id foi passado via GET e não está vazio
 if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
     $order_id = $_GET['order_id'];
 
-    // --- 1. Buscar Detalhes do Pedido na Tabela 'orders' ---
-    // Não precisa filtrar por user_id aqui, pois o admin pode ver todos.
     $stmt_order = $conn->prepare("SELECT order_id, order_cost, order_status, user_id, shipping_city, shipping_uf, shipping_address, order_date FROM orders WHERE order_id = ? LIMIT 1");
     $stmt_order->bind_param('i', $order_id);
     $stmt_order->execute();
@@ -21,13 +16,11 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
         $order = $order_result->fetch_assoc();
     } else {
         $error_message = "Pedido não encontrado.";
-        header('Location: orders.php?error_message=' . urlencode($error_message)); // Redireciona para a lista de pedidos do admin
+        header('Location: orders.php?error_message=' . urlencode($error_message)); 
         exit;
     }
     $stmt_order->close();
 
-    // --- 2. Buscar Itens do Pedido na Tabela 'order_items' (COM JOIN) ---
-    // Apenas order_id é suficiente aqui, user_id já foi validado no pedido principal.
     $stmt_items = $conn->prepare("SELECT 
                                     oi.product_id, 
                                     p.product_name, 
@@ -51,17 +44,17 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
 
 } else {
     $error_message = "ID do pedido não fornecido.";
-    header('Location: orders.php?error_message=' . urlencode($error_message)); // Redireciona para a lista de pedidos
+    header('Location: orders.php?error_message=' . urlencode($error_message)); 
     exit;
 }
 ?>
 
-<?php include('./header.php'); // Inclui o cabeçalho do admin ?>
+<?php include('./header.php');  ?>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-lg-2 sidebar">
-            <?php include('./sidemenu.php'); // Inclui o menu lateral ?>
+            <?php include('./sidemenu.php'); ?>
         </div>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

@@ -13,9 +13,7 @@ $stmt_total->close();
 
 $total_pages = ceil($total_records / $limit);
 
-// Consulta para buscar os pedidos com paginação (no admin/orders.php)
 $stmt = $conn->prepare("SELECT order_id, order_cost, order_status, user_id, shipping_city, shipping_uf, shipping_address, order_date FROM orders ORDER BY order_date DESC LIMIT ? OFFSET ?");
-//                                                                                   ^--- Adicionado ORDEM AQUI!
 $stmt->bind_param('ii', $limit, $offset);
 $stmt->execute();
 $orders = $stmt->get_result();

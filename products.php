@@ -1,6 +1,6 @@
 <?php
 include('server/connection.php');
-$search_query = $_GET['search_query'] ?? ''; // Pega a query de busca da URL
+$search_query = $_GET['search_query'] ?? ''; 
 $limit = 24; 
 $page = isset($_GET['page']) ? $_GET['page'] : 1; 
 
@@ -13,7 +13,6 @@ $stmt_total->fetch();
 $stmt_total->close(); 
 
 $total_pages = ceil($total_records / $limit);
-// Adapte a consulta SQL principal para buscar produtos
 if (!empty($search_query)) {
     $stmt_total = $conn->prepare("SELECT COUNT(*) FROM products WHERE product_name LIKE ?");
     $search_param = "%" . $search_query . "%";
@@ -26,7 +25,6 @@ if (!empty($search_query)) {
     $stmt = $conn->prepare("SELECT product_id, product_name, product_category, product_price, product_special_offer, product_color, product_image FROM products WHERE product_name LIKE ? ORDER BY product_id DESC LIMIT ? OFFSET ?");
     $stmt->bind_param('sii', $search_param, $limit, $offset);
 } else {
-    // ... sua consulta original sem busca ...
     $stmt = $conn->prepare("SELECT product_id, product_name, product_category, product_price, product_special_offer, product_color, product_image FROM products LIMIT ? OFFSET ?");
     $stmt->bind_param('ii', $limit, $offset);
 }
@@ -48,7 +46,6 @@ $products = $stmt->get_result();
                     <h5 class="p-name fw-light"><?php echo htmlspecialchars($row['product_name']); ?></h5>
                     <?php if ($row['product_special_offer'] > 0): ?>
                     <?php 
-                    // Calcula o preço original
                     $original_price = $row['product_price'] / (1 - $row['product_special_offer'] / 100);
                     ?>
                     <p class="p-price text-decoration-line-through text-muted mt-1 mb-1"><small>De R$ <?php echo number_format($original_price, 2, ',', '.'); ?><span class="badge bg-danger ms-2">-<?php echo htmlspecialchars($row['product_special_offer']); ?>%</span></small></p>

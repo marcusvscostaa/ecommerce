@@ -20,9 +20,6 @@ $shipping_address = '';
 $shipping_city = '';
 $shipping_uf = '';
 
-// Se o usuário está logado, você pode buscar o endereço padrão dele se tiver essa informação no DB
-// Por exemplo, se na tabela 'users' você tivesse campos como user_address, user_city, user_uf
-
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $stmt_user = $conn->prepare("SELECT shipping_address, shipping_city, shipping_uf FROM orders WHERE user_id = ? LIMIT 1");
@@ -37,20 +34,8 @@ if (isset($_SESSION['user_id'])) {
     $stmt_user->close();
 }
 
-
-
-// Processa o formulário de checkout quando ele é enviado (método POST)
-// A SUBMISSÃO DESTE FORMULÁRIO LEVARÁ PARA place_order.php (próxima etapa
-
-// Recalcula o total do carrinho se não estiver definido, para ter certeza que os valores estão atualizados
 if (!isset($_SESSION['total_cart_price']) || !isset($_SESSION['total_cart_quantity'])) {
-    // Chame a função calculateTotalCart() de cart.php se ela estiver em um include comum,
-    // ou copie-a aqui se não for. Para este exemplo, vou supor que ela está disponível.
-    // Se a função calculateTotalCart() estiver em cart.php e não for globalmente acessível,
-    // você pode copiar o conteúdo da função aqui ou incluir cart.php temporariamente.
-    // Para evitar conflitos, é melhor ter uma função calculate_cart_totals separada e universal.
-    
-    // Simplificando: recarrega os totais do carrinho se não estiverem na sessão
+
     $total_price_recalc = 0;
     $total_quantity_recalc = 0;
     if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
@@ -65,7 +50,7 @@ if (!isset($_SESSION['total_cart_price']) || !isset($_SESSION['total_cart_quanti
 
 ?>
 
-<?php include('layouts/header.php'); // Inclui o cabeçalho modular ?>
+<?php include('layouts/header.php'); ?>
 
 <section id="checkout-form" class="my-5 py-5">
 
@@ -129,4 +114,4 @@ if (!isset($_SESSION['total_cart_price']) || !isset($_SESSION['total_cart_quanti
     </div>
 </section>
 
-<?php include('layouts/footer.php'); // Inclui o rodapé modular ?>
+<?php include('layouts/footer.php'); ?>

@@ -4,26 +4,22 @@ include('../server/connection.php');
 $stmt_latest = $conn->prepare("SELECT order_id, order_cost, order_status, order_date FROM orders ORDER BY order_date DESC LIMIT 5");
 $stmt_latest->execute();
 $latest_orders = $stmt_latest->get_result();
-// --- 1. Contar Pedidos Pendentes (Status 'on_hold') ---
 $stmt_pending_orders = $conn->prepare("SELECT COUNT(*) FROM orders WHERE order_status = 'on_hold'");
 $stmt_pending_orders->execute();
 $stmt_pending_orders->bind_result($pending_orders_count);
 $stmt_pending_orders->fetch();
 $stmt_pending_orders->close();
 
-// --- 2. Calcular Faturamento Total (Pedidos com Status 'paid' ou 'delivered') ---
-// Para um faturamento mais preciso, considere apenas pedidos 'paid' ou 'delivered'.
+
 $stmt_total_revenue = $conn->prepare("SELECT SUM(order_cost) FROM orders WHERE order_status IN ('paid', 'delivered')");
 $stmt_total_revenue->execute();
 $stmt_total_revenue->bind_result($total_revenue);
 $stmt_total_revenue->fetch();
 $stmt_total_revenue->close();
-// Se não houver pedidos pagos/entregues, SUM() retorna NULL. Trate isso para mostrar 0.
 $total_revenue = $total_revenue ?? 0;
-// --- 3. Contar Total de Usuários ---
 $stmt_total_users = $conn->prepare("SELECT COUNT(*) FROM users");
 $stmt_total_users->execute();
-$stmt_total_users->bind_result($total_users_count); // Variável para o total de usuários
+$stmt_total_users->bind_result($total_users_count); 
 $stmt_total_users->fetch();
 $stmt_total_users->close();
 ?>

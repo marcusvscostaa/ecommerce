@@ -107,9 +107,9 @@ $stmt_items->close();
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
     <style>
-       .payment-info-card {
+        /* Página de pagamento */
+        .payment-info-card {
             border: 1px solid #e0e0e0;
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -145,12 +145,12 @@ $stmt_items->close();
             color: coral;
             font-size: 1.5rem;
         }
-        #paypal-button-container {
-            margin-top: 30px;
-            min-height: 50px; 
-        }
+        #paypal-button-container {
+            margin-top: 30px;
+            min-height: 50px;
+        }
+
     </style>
-</head>
 <body>
     <?php include('layouts/header.php'); ?>
 
