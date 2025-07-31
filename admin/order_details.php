@@ -7,7 +7,10 @@ $order_items = [];
 if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
     $order_id = $_GET['order_id'];
 
-    $stmt_order = $conn->prepare("SELECT order_id, order_cost, order_status, user_id, shipping_city, shipping_uf, shipping_address, order_date FROM orders WHERE order_id = ? LIMIT 1");
+    $stmt_order = $conn->prepare("SELECT order_id, order_cost, order_status, user_id, shipping_city, shipping_uf, shipping_address, order_date 
+                                  FROM orders 
+                                  WHERE order_id = ? 
+                                  LIMIT 1");
     $stmt_order->bind_param('i', $order_id);
     $stmt_order->execute();
     $order_result = $stmt_order->get_result();

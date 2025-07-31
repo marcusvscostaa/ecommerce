@@ -102,11 +102,6 @@ $stmt_orders->close();
                         <?php echo $error_message; ?>
                     </div>
                 <?php endif; ?>
-                <?php if (!empty($success_message)): ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php echo $success_message; ?>
-                    </div>
-                <?php endif; ?>
 
                 <div class="card mb-4">
                     <div class="border-bottom pb-2 border-secondary fw-bolder m-3">

@@ -13,7 +13,10 @@ $stmt_total->close();
 
 $total_pages = ceil($total_records / $limit);
 
-$stmt = $conn->prepare("SELECT product_id, product_name, product_category, product_price, product_special_offer, product_color, product_image FROM products LIMIT ? OFFSET ?");
+$stmt = $conn->prepare("SELECT product_id, product_name, product_category, product_price, product_special_offer, product_color, product_image 
+                        FROM products 
+                        LIMIT ? 
+                        OFFSET ?");
 $stmt->bind_param('ii', $limit, $offset);
 $stmt->execute();
 $products = $stmt->get_result();

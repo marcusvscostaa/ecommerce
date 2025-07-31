@@ -15,7 +15,8 @@ if (isset($_POST['edit_product_btn'])) {
     if (empty($product_id) || empty($product_name) || empty($product_category) || empty($product_description) || empty($product_price)) {
         $message = "Por favor, preencha todos os campos obrigatórios.";
     } else {
-        $stmt = $conn->prepare("UPDATE products SET product_name=?, product_category=?, product_description=?, product_price=?, product_special_offer=?, product_color=? WHERE product_id=?");
+        $stmt = $conn->prepare("UPDATE products SET product_name=?, product_category=?, product_description=?, product_price=?, product_special_offer=?, product_color=? 
+                                WHERE product_id=?");
         
         $stmt->bind_param('ssssisi',
             $product_name,

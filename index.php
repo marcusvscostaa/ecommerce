@@ -2,7 +2,7 @@
 
 include('server/connection.php');
 
-$stmt_promo = $conn->prepare("SELECT product_id, product_name, product_image, product_price, product_special_offer FROM products WHERE product_special_offer IS NOT NULL AND product_special_offer > 0 LIMIT 5"); // Limite para 3 itens no carrossel
+$stmt_promo = $conn->prepare("SELECT product_id, product_name, product_image, product_price, product_special_offer FROM products WHERE product_special_offer IS NOT NULL AND product_special_offer > 0 LIMIT 5");
 $stmt_promo->execute();
 $promo_products = $stmt_promo->get_result();
 
@@ -38,14 +38,14 @@ $featured_products = $stmt_featured->get_result();
                                 <div class="carousel-item-caption-rotation">
                                 </div>
                                   <div class="carousel-item-caption"> 
-                                    <h5><?php echo htmlspecialchars($promo_row['product_name']); ?></h5>
+                                    <h5 class="text-white"><?php echo htmlspecialchars($promo_row['product_name']); ?></h5>
                                         <?php if ($promo_row['product_special_offer'] > 0): ?>
                                           <?php 
                                             $original_price = $promo_row['product_price'] / (1 - $promo_row['product_special_offer'] / 100);
                                           ?>
                                           <p class="text-decoration-line-through text-muted"><small>De R$ <?php echo number_format($original_price, 2, ',', '.'); ?><span class="badge bg-danger ms-2">-<?php echo htmlspecialchars($promo_row['product_special_offer']); ?>%</span></small></p>
                                         <?php endif; ?>
-                                    <h4 class="p-price">R$ <?php echo number_format($promo_row['product_price'], 2, ',', '.'); ?></h4>
+                                    <h4 class="p-price text-white">R$ <?php echo number_format($promo_row['product_price'], 2, ',', '.'); ?></h4>
                                     <a href="single_product.php?product_id=<?php echo $promo_row['product_id']; ?>" class="btn btn-outline-light">Comprar</a>  
                                 </div> 
                             </div>
@@ -69,7 +69,7 @@ $featured_products = $stmt_featured->get_result();
     <section id="products" class="my-2 py-2">
         <div class="container mx-auto  row">
             <div class="font-section text-center mt-2 border-bottom border-3 mb-2 bg-white p-1">
-              <p class="text-center mt-2 fs-6 fw-bolder">Confira os produtos mais recentes ou populares do Xain.</p>
+              <p class="text-center my-2 fs-6 fw-bolder">Confira os produtos mais recentes ou populares do Xain.</p>
             </div>
         </div>
       <div class="row mx-auto container d-flex align-items-stretch">
@@ -83,7 +83,7 @@ $featured_products = $stmt_featured->get_result();
                             </div>
                             <h5 class="p-name fw-light"><?php echo htmlspecialchars($row['product_name']); ?></h5>
                             <p class="p-price text-decoration-line-through text-muted mt-1 mb-1"><small>De R$ <?php echo number_format($original_price, 2, ',', '.'); ?><span class="badge bg-danger ms-2">-<?php echo htmlspecialchars($row['product_special_offer']); ?>%</span></small></p>
-                            <h4 class="p-price fw-bold">R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?></h4>
+                            <h4 class="p-price">R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?></h4>
                         </div>
                     </a>
                 </div>

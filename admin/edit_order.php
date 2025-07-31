@@ -1,7 +1,6 @@
 <?php
 
 include('../server/connection.php'); 
-
 $message = ''; 
 
 if (isset($_POST['update_order'])) {
